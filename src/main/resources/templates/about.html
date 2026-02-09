@@ -3,20 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Over mij</title>
-    <style>
-        body {
-            background: red;
-        }
-
-        h1 {
-            font-size: 5rem;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
     <h1>Over mij</h1>
     <h1>Ik ben Albanees</h1>
-    <p>bla bla bla bla</p>
+    <ol>
+        <li th:text="${myName}"></li>
+        <li th:text="${myAddress}"></li>
+        <li th:text="${myCity}"></li>
+        <li th:text="${myCountry}"></li>
+    </ol>
 </body>
 </html>
