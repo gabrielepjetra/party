@@ -1,2 +1,3 @@
-INSERT INTO VENUE (VENUE_NAME, LINK_MORE_INFO)
-values ('test-venue','test-link');
+INSERT INTO VENUE (VENUE_NAME, LINK_MORE_INFO, CAPACITY, FOOD_PROVIDED, INDOOR, OUTDOOR, FREE_PARKING_AVAILABLE, CITY,
+                   DISTANCE_FROM_PUBLIC_TRANSPORT_IN_KM, IMAGE_URL)
+values ('De Club', 'https://transitm.mechelen.be/de-club', 150, false, true, false, true, 'Mechelen', 2, '/img/venue_club.jpg');

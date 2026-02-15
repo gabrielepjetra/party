@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Zaaldetails</title>
@@ -31,9 +31,56 @@
         </ul>
     </div>
 </nav>
-<main class="container" th:object="${venue}">
-    <h2 th:text="*{venueName}" class="text-center fs-3"></h2>
-    <p>zie <a th:text="*{linkMoreInfo}" th:href="*{linkMoreInfo}" target="_blank"></a></p>
+<main class="container mt-4" th:object="${venue}">
+    <h1 th:text="*{venueName}" class="text-center fs-1 mb-4"></h1>
+    <h3 class="text-center mb-3" th:text="*{city}"></h3>
+    <p class="text-center">zie <a th:href="*{linkMoreInfo}" th:text="*{linkMoreInfo}" target="_blank"></a></p>
+
+    <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+            <img th:src="*{imageUrl}" th:alt="*{venueName}" class="img-fluid rounded shadow" style="max-width: 500px;">
+        </div>
+
+        <div class="col-md-6">
+            <h4 class="mb-3">Faciliteiten:</h4>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <strong>Capaciteit:</strong><br>
+                            max <span th:text="*{capacity}"></span> personen
+                        </li>
+                        <li class="mb-2">
+                            <strong>Afstand OV:</strong><br>
+                            <span th:text="*{distanceFromPublicTransportInKm}"></span> km
+                        </li>
+                        <li class="mb-2">
+                            <strong>Eten voorzien:</strong><br>
+                            <span th:text="*{foodProvided} ? 'ja' : 'nee'"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <strong>Binnen:</strong><br>
+                            <span th:text="*{indoor} ? 'ja' : 'nee'"></span>
+                        </li>
+                        <li class="mb-2">
+                            <strong>Buiten:</strong><br>
+                            <span th:text="*{outdoor} ? 'ja' : 'nee'"></span>
+                        </li>
+                        <li class="mb-2">
+                            <strong>Gratis parking:</strong><br>
+                            <span th:text="*{freeParkingAvailable} ? 'ja' : 'nee'"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 </body>
 </html>
