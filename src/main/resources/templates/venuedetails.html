@@ -31,7 +31,7 @@
         </ul>
     </div>
 </nav>
-<main class="container mt-4" th:object="${venue}">
+<main class="container mt-4" th:if="${venue}" th:object="${venue}">
     <h1 th:text="*{venueName}" class="text-center fs-1 mb-4"></h1>
     <h3 class="text-center mb-3" th:text="*{city}"></h3>
     <p class="text-center">zie <a th:href="*{linkMoreInfo}" th:text="*{linkMoreInfo}" target="_blank"></a></p>
@@ -81,6 +81,10 @@
             </div>
         </div>
     </div>
+</main>
+
+<main class="container mt-4" th:unless="${venue}">
+    <p class="text-center fs-4">Geen geldige zaal gekozen</p>
 </main>
 </body>
 </html>
