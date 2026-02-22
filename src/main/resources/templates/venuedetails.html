@@ -32,59 +32,52 @@
     </div>
 </nav>
 <main class="container mt-4" th:if="${venue}" th:object="${venue}">
-    <h1 th:text="*{venueName}" class="text-center fs-1 mb-4"></h1>
-    <h3 class="text-center mb-3" th:text="*{city}"></h3>
-    <p class="text-center">zie <a th:href="*{linkMoreInfo}" th:text="*{linkMoreInfo}" target="_blank"></a></p>
+    <h1 th:text="*{venueName}" class="text-center display-1 mb-3"></h1>
+    <h3 class="text-center mb-4" th:text="*{city}"></h3>
 
-    <div class="row mt-4">
+    <div class="row">
         <div class="col-md-6 mb-4">
-            <img th:src="*{imageUrl}" th:alt="*{venueName}" class="img-fluid rounded shadow" style="max-width: 500px;">
+            <img th:src="*{imageUrl}" th:alt="*{venueName}" class="img-fluid rounded shadow">
         </div>
 
         <div class="col-md-6">
+            <p class="mb-4">
+                Zie <a th:href="*{linkMoreInfo}" target="_blank" class="text-primary">meer info</a>
+            </p>
+
             <h4 class="mb-3">Faciliteiten:</h4>
+            <ul class="list-unstyled text-center">
+                <li class="mb-2">
+                    max <span th:text="*{capacity}"></span> personen
+                </li>
+                <li class="mb-2">
+                    <span th:text="*{distanceFromPublicTransportInKm}"></span> km van openbaar vervoer
+                </li>
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <strong>Capaciteit:</strong><br>
-                            max <span th:text="*{capacity}"></span> personen
-                        </li>
-                        <li class="mb-2">
-                            <strong>Afstand OV:</strong><br>
-                            <span th:text="*{distanceFromPublicTransportInKm}"></span> km
-                        </li>
-                        <li class="mb-2">
-                            <strong>Eten voorzien:</strong><br>
-                            <span th:text="*{foodProvided} ? 'ja' : 'nee'"></span>
-                        </li>
-                    </ul>
-                </div>
+                <li class="mb-2" th:if="*{foodProvided}">
+                    eten is voorzien
+                </li>
 
-                <div class="col-sm-6">
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <strong>Binnen:</strong><br>
-                            <span th:text="*{indoor} ? 'ja' : 'nee'"></span>
-                        </li>
-                        <li class="mb-2">
-                            <strong>Buiten:</strong><br>
-                            <span th:text="*{outdoor} ? 'ja' : 'nee'"></span>
-                        </li>
-                        <li class="mb-2">
-                            <strong>Gratis parking:</strong><br>
-                            <span th:text="*{freeParkingAvailable} ? 'ja' : 'nee'"></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                <li class="mb-2" th:if="*{indoor && outdoor}">
+                    binnen && buiten
+                </li>
+                <li class="mb-2" th:if="*{indoor && !outdoor}">
+                    binnen
+                </li>
+                <li class="mb-2" th:if="*{!indoor && outdoor}">
+                    buiten
+                </li>
+
+                <li class="mb-2" th:if="*{freeParkingAvailable}">
+                    gratis parking
+                </li>
+            </ul>
         </div>
     </div>
 </main>
 
-<main class="container mt-4" th:unless="${venue}">
-    <p class="text-center fs-4">Geen geldige zaal gekozen</p>
+<main class="container mt-4 text-center" th:unless="${venue}">
+    <h2 class="text-muted">Geen geldige zaal gekozen</h2>
 </main>
 </body>
 </html>
