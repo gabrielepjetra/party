@@ -8,18 +8,22 @@
         <h1 class="text-center mb-4">Zalen</h1>
 
         <div class="row">
-            <div th:each="venue: ${venues}" th:object="${venue}"
-                 class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <a th:href="@{|/venuedetails/*{id}|}" class="btn btn-primary">
-                            <h3 th:text="*{venueName}"></h3>
-                        </a>
-                    </div>
-                </div>
+            <div th:each="venue: ${venues}" th:object="${venue}" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+
+                <a th:href="@{|/venuedetails/*{id}|}"
+                   class="card border-0 m-1 p-2 text-center text-decoration-none h-100 text-body">
+
+                    <h3 th:text="*{venueName}"></h3>
+                    <p th:text="|*{capacity} personen|"></p>
+
+                    <img th:src="*{imageUrl}" class="img-fluid mt-auto" alt="zaal foto">
+
+                </a>
+
             </div>
         </div>
     </main>
+
     <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
