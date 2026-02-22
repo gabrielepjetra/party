@@ -1,3 +1,6 @@
+INSERT INTO CLIENT (NAME, NR_OF_ORDERS, TOTAL_AMOUNT, DISCOUNT_TAKEN)
+VALUES ('Vera Peeters', 5, 250.50, 0.0);
+
 insert into VENUE
 (VENUE_NAME, LINK_MORE_INFO,
  CAPACITY, FOOD_PROVIDED, INDOOR, OUTDOOR, FREE_PARKING_AVAILABLE, CITY, DISTANCE_FROM_PUBLIC_TRANSPORT_IN_KM,
@@ -85,6 +88,3 @@ insert into VENUE
 values ('Kruidtuin', 'https://www.mechelen.be/kruidtuin',
         500, false, false, true, false, 'Mechelen', 1,
         '/img/venue_kruidtuin.jpg');
-
-INSERT INTO CLIENT (NAME, NR_OF_ORDERS, TOTAL_AMOUNT, DISCOUNT_TAKEN)
-VALUES ('Vera Peeters', 5, 250.50, 0.0);
