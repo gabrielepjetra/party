@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerelement('Klant info')}"></head>
-<body class="container-fluid p-0">
-<div th:replace="~{fragments/header :: navbar}"></div>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
 
-<main class="container mt-5" th:object="${client}">
-    <h1 class="text-center mb-4" th:text="*{name}">Client Name</h1>
+    <div th:replace="~{fragments/header :: navbar}"></div>
 
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Client Informatie</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <strong>Aantal orders:</strong>
-                            <span th:text="*{nrOfOrders}">0</span>
-                        </li>
-                        <li class="mb-2">
-                            <strong>Totaal bedrag:</strong>
-                            €<span th:text="*{totalAmount}">0.00</span>
-                        </li>
-                        <li class="mb-2">
-                            <strong>Discount genomen:</strong>
-                            €<span th:text="*{discountTaken}">0.00</span>
-                        </li>
-                    </ul>
+    <main class="container mt-4 flex-grow-1" th:object="${client}">
+        <h1 class="text-center mb-4" th:text="*{name}">Client Name</h1>
 
-                    <hr>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Client Informatie</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <strong>Aantal orders:</strong>
+                                <span th:text="*{nrOfOrders}">0</span>
+                            </li>
+                            <li class="mb-2">
+                                <strong>Totaal bedrag:</strong>
+                                €<span th:text="*{totalAmount}">0.00</span>
+                            </li>
+                            <li class="mb-2">
+                                <strong>Discount genomen:</strong>
+                                €<span th:text="*{discountTaken}">0.00</span>
+                            </li>
+                        </ul>
 
-                    <h5 class="text-success">
-                        <span th:text="*{name}">Vera</span>, je discount is
-                        €<span th:text="${#numbers.formatDecimal(discount, 1, 2)}">0.00</span>
-                    </h5>
+                        <hr>
+
+                        <h5 class="text-success">
+                            <span th:text="*{name}">Vera</span>, je discount is
+                            €<span th:text="${#numbers.formatDecimal(discount, 1, 2)}">0.00</span>
+                        </h5>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
 </body>
 </html>

@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerelement('Klant home')}"></head>
-<body class="container-fluid p-0">
-<div th:replace="~{fragments/header :: navbar}"></div>
-<main class="container mt-5">
-    <h1 class="text-center mb-5">Client Pagina's</h1>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
 
-    <div class="row justify-content-center">
-        <div class="col-md-4 mb-3">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title">Begroeting</h5>
-                    <p class="card-text">Zie je persoonlijke begroeting</p>
-                    <a th:href="@{/clientgreeting}" class="btn btn-primary">Ga naar begroeting</a>
+    <div th:replace="~{fragments/header :: navbar}"></div>
+
+    <main class="container mt-4 flex-grow-1">
+        <h1 class="text-center mb-5">Client Pagina's</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Begroeting</h5>
+                        <p class="card-text">Zie je persoonlijke begroeting</p>
+                        <a th:href="@{/clientgreeting}" class="btn btn-primary">Ga naar begroeting</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Details</h5>
+                        <p class="card-text">Bekijk je client details en discount</p>
+                        <a th:href="@{/clientdetails}" class="btn btn-primary">Ga naar details</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </main>
 
-        <div class="col-md-4 mb-3">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title">Details</h5>
-                    <p class="card-text">Bekijk je client details en discount</p>
-                    <a th:href="@{/clientdetails}" class="btn btn-primary">Ga naar details</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
 </body>
 </html>

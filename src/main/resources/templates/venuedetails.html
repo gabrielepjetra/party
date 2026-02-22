@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerelement('Zaaldetails')}"></head>
-<body class="container-fluid p-0">
-<div th:replace="~{fragments/header :: navbar}"></div>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/header :: navbar}"></div>
 
-<main class="container mt-4" th:if="${venue}" th:object="${venue}">
-    <h1 th:text="*{venueName}" class="text-center display-1 mb-3"></h1>
-    <h3 class="text-center mb-4" th:text="*{city}"></h3>
+    <main class="container mt-4 flex-grow-1" th:if="${venue}" th:object="${venue}">
+        <h1 th:text="*{venueName}" class="text-center display-1 mb-3"></h1>
+        <h3 class="text-center mb-4" th:text="*{city}"></h3>
 
-    <div class="row">
-        <div class="col-md-6 mb-4">
-            <img th:src="*{imageUrl}" th:alt="*{venueName}" class="img-fluid rounded shadow">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <img th:src="*{imageUrl}" th:alt="*{venueName}" class="img-fluid rounded shadow">
+            </div>
+
+            <div class="col-md-6">
+                <p class="mb-4">
+                    Zie <a th:href="*{linkMoreInfo}" target="_blank" class="text-primary">meer info</a>
+                </p>
+
+                <h4 class="mb-3">Faciliteiten:</h4>
+                <ul class="list-unstyled text-center">
+                    <li class="mb-2">
+                        max <span th:text="*{capacity}"></span> personen
+                    </li>
+                    <li class="mb-2">
+                        <span th:text="*{distanceFromPublicTransportInKm}"></span> km van openbaar vervoer
+                    </li>
+
+                    <li class="mb-2" th:if="*{foodProvided}">
+                        eten is voorzien
+                    </li>
+
+                    <li class="mb-2" th:if="*{indoor && outdoor}">
+                        binnen && buiten
+                    </li>
+                    <li class="mb-2" th:if="*{indoor && !outdoor}">
+                        binnen
+                    </li>
+                    <li class="mb-2" th:if="*{!indoor && outdoor}">
+                        buiten
+                    </li>
+
+                    <li class="mb-2" th:if="*{freeParkingAvailable}">
+                        gratis parking
+                    </li>
+                </ul>
+            </div>
         </div>
+    </main>
 
-        <div class="col-md-6">
-            <p class="mb-4">
-                Zie <a th:href="*{linkMoreInfo}" target="_blank" class="text-primary">meer info</a>
-            </p>
-
-            <h4 class="mb-3">Faciliteiten:</h4>
-            <ul class="list-unstyled text-center">
-                <li class="mb-2">
-                    max <span th:text="*{capacity}"></span> personen
-                </li>
-                <li class="mb-2">
-                    <span th:text="*{distanceFromPublicTransportInKm}"></span> km van openbaar vervoer
-                </li>
-
-                <li class="mb-2" th:if="*{foodProvided}">
-                    eten is voorzien
-                </li>
-
-                <li class="mb-2" th:if="*{indoor && outdoor}">
-                    binnen && buiten
-                </li>
-                <li class="mb-2" th:if="*{indoor && !outdoor}">
-                    binnen
-                </li>
-                <li class="mb-2" th:if="*{!indoor && outdoor}">
-                    buiten
-                </li>
-
-                <li class="mb-2" th:if="*{freeParkingAvailable}">
-                    gratis parking
-                </li>
-            </ul>
-        </div>
-    </div>
-</main>
-
-<main class="container mt-4 text-center" th:unless="${venue}">
-    <h2 class="text-muted">Geen geldige zaal gekozen</h2>
-</main>
+    <main class="container mt-4 text-center flex-grow-1" th:unless="${venue}">
+        <h2 class="text-muted">Geen geldige zaal gekozen</h2>
+    </main>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

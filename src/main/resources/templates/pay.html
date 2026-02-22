@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerelement('Pay')}"></head>
-<body class="container-fluid p-0">
-    <div class="bg-primary border border-danger border-3 rounded text-light m-4 p-2">
-        <p class="my-0">De datum van vandaag is <span th:text="${today}"></span></p>
-    </div>
-    <div class="bg-info border border-warning border-3 rounded m-4 p-2">
-        <p class="my-0">De uiterste datum van betalen is <span th:text="${futureDay}"></span></p>
-    </div>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
+
+    <main class="container mt-4 flex-grow-1">
+        <div class="bg-primary border border-danger border-3 rounded text-light m-4 p-2">
+            <p class="my-0">De datum van vandaag is <span th:text="${today}"></span></p>
+        </div>
+        <div class="bg-info border border-warning border-3 rounded m-4 p-2">
+            <p class="my-0">De uiterste datum van betalen is <span th:text="${futureDay}"></span></p>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
 </body>
 </html>

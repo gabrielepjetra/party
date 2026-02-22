@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerelement('Zalen')}"></head>
-<body class="container-fluid p-0">
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: navbar}"></div>
 
-<main class="container mt-4">
-    <h1 class="text-center mb-4">Zalen</h1>
+    <main class="container mt-4 flex-grow-1">
+        <h1 class="text-center mb-4">Zalen</h1>
 
-    <div class="row">
-        <div th:each="venue: ${venues}" th:object="${venue}"
-             class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-            <div class="card">
-                <div class="card-body text-center">
-                    <a th:href="@{|/venuedetails/*{id}|}" class="btn btn-primary">
-                        <h3 th:text="*{venueName}"></h3>
-                    </a>
+        <div class="row">
+            <div th:each="venue: ${venues}" th:object="${venue}"
+                 class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <a th:href="@{|/venuedetails/*{id}|}" class="btn btn-primary">
+                            <h3 th:text="*{venueName}"></h3>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
-
+    </main>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

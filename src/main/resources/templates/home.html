@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerelement('Home')}"></head>
-<body class="container-fluid p-0 bg-black">
-<div th:replace="~{fragments/header :: navbar}"></div>
-<main class="row p-3 p-md-4 text-warning">
-    <div class="col">
-        <a th:href="@{about}">About</a>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/header :: navbar}"></div>
+
+    <main class="container mt-4 flex-grow-1">
         <h1>Hello ALBANIA</h1>
         <p th:text="${myCalculatedValue}">myCalculatedValue</p>
-    </div>
-</main>
-<footer class="footer fixed-bottom mt-auto py-3 bg-black border-top border-secondary-subtle border-3">
-    <div class="container text-center">
-        <p class="text-warning">&copy; Thomas More</p>
-    </div>
-</footer>
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
