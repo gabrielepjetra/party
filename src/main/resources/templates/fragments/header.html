@@ -21,16 +21,16 @@
         <a class="navbar-brand text-warning" th:href="@{/}">Let's Party!</a>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/}">Home</a>
+                <a class="nav-link" th:classappend="${currentUrl == '/' ? 'active' : ''}" th:href="@{/}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/venuelist}">Zalen</a>
+                <a class="nav-link" th:classappend="${currentUrl == '/venuelist' ? 'active' : ''}" th:href="@{/venuelist}">Zalen</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/about}">Over mij</a>
+                <a class="nav-link" th:classappend="${currentUrl == '/about' ? 'active' : ''}" th:href="@{/about}">Over mij</a>
             </li>
             <li>
-                <a class="nav-link" th:href="@{/clienthome}">Klanten zone</a>
+                <a class="nav-link" th:classappend="${currentUrl == '/clienthome' ? 'active' : ''}" th:href="@{/clienthome}">Klanten zone</a>
             </li>
         </ul>
     </div>
