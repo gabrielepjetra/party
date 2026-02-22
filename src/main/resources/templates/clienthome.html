@@ -1,30 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Client Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
-</head>
+<head th:replace="~{fragments/header :: headerelement('Klant home')}"></head>
 <body class="container-fluid p-0">
-<nav class="navbar navbar-expand-md navbar-dark bg-dark p-3">
-    <div class="collapse navbar-collapse">
-        <a class="navbar-brand text-warning" th:href="@{/}">Let's Party!</a>
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/venuedetails}">Zaaldetails</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/clienthome}">Client</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
+<div th:replace="~{fragments/header :: navbar}"></div>
 <main class="container mt-5">
     <h1 class="text-center mb-5">Client Pagina's</h1>
 
