@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: headerelement('Artiesten')}"></head>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<main class="container mt-4 flex-grow-1">
+    <h1 class="mb-4">Artiesten</h1>
+
+    <div class="row">
+        <div th:each="artist: ${artists}" th:object="${artist}" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+
+            <a th:href="@{|/artistdetails/*{id}|}"
+               class="card border-0 m-1 p-2 text-center text-decoration-none h-100 text-body">
+
+                <h3 th:text="*{artistName}"></h3>
+
+                <img th:src="*{imageUrl}" class="img-fluid mt-auto" alt="artist foto">
+            </a>
+
+        </div>
+    </div>
+</main>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

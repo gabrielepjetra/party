@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -11,11 +12,7 @@ import java.time.format.DateTimeFormatter;
 public class HomeController {
 
     @GetMapping({"/","/home"})
-    public String home(Model model) {
-        int myCalculatedValue = 34 * 62;
-
-        model.addAttribute("myCalculatedValue", myCalculatedValue);
-
+    public String home() {
         return "home";
     }
 
@@ -40,9 +37,13 @@ public class HomeController {
         LocalDate futureDay = today.plusDays(30);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DayOfWeek dayOfWeek = today.getDayOfWeek();
+
+        boolean isWeekend = (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY);
 
         model.addAttribute("today", today.format(formatter));
         model.addAttribute("futureDay", futureDay.format(formatter));
+        model.addAttribute("weekend", isWeekend);
 
         return "pay";
     }

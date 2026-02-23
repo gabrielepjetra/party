@@ -10,6 +10,11 @@
         <div class="bg-info border border-warning border-3 rounded m-4 p-2">
             <p class="my-0">De uiterste datum van betalen is <span th:text="${futureDay}"></span></p>
         </div>
+        <div class="text-center mt-5">
+            <h2 th:if="${weekend}" class="text-success">Prettig weekend, je hebt het verdient!</h2>
+
+            <h2 th:unless="${weekend}" class="text-danger">Voor je het weet is het weekend!</h2>
+        </div>
     </main>
 
     <div th:replace="~{fragments/footer :: footer}"></div>

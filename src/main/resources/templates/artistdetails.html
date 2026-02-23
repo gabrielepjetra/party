@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: headerelement('Artist Details')}"></head>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<main class="container mt-4 flex-grow-1" th:if="${artist}" th:object="${artist}">
+
+    <div class="text-center mb-4">
+        <h1 class="display-4" th:text="*{artistName}"></h1>
+        <h4 th:text="*{genre}"></h4>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <p><strong>portfolio:</strong> <span th:text="*{portfolio}"></span></p>
+            <p th:text="*{bio}"></p>
+            <a th:href="*{linkMoreInfo}" target="_blank" th:text="*{linkMoreInfo}"></a>
+        </div>
+
+        <div class="col-md-6 mb-3 text-center">
+            <img th:src="*{imageUrl}" alt="artist foto" class="img-fluid">
+        </div>
+    </div>
+
+</main>
+
+<main class="container mt-4 flex-grow-1 text-center" th:unless="${artist}">
+    <h2 class="text-danger">Geen geldige artiest gekozen</h2>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

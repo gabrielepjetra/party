@@ -32,6 +32,9 @@
             <li>
                 <a class="nav-link" th:classappend="${currentUrl == '/clienthome' ? 'active' : ''}" th:href="@{/clienthome}">Klanten zone</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" th:classappend="${currentUrl == '/artistlist' ? 'active' : ''}" th:href="@{/artistlist}">Artiesten</a>
+            </li>
         </ul>
     </div>
 </nav>
