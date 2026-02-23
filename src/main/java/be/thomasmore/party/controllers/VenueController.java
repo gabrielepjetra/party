@@ -32,7 +32,14 @@ public class VenueController {
 
         Optional<Venue> venueFromDb = venueRepository.findById(id);
         if (venueFromDb.isPresent()) {
+            int maxId = (int) venueRepository.count();
+
+            int prevId = (id == 1) ? maxId : id - 1;
+            int nextId = (id == maxId) ? 1 : id + 1;
+
             model.addAttribute("venue", venueFromDb.get());
+            model.addAttribute("prev", prevId);
+            model.addAttribute("next", nextId);
         }
 
         return "venuedetails";

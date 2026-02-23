@@ -33,7 +33,14 @@ public class ArtistController {
         Optional<Artist> artistFromDb = artistRepository.findById(id);
 
         if (artistFromDb.isPresent()) {
+            int maxId = (int) artistRepository.count();
+
+            int prevId = (id == 1) ? maxId : id - 1;
+            int nextId = (id == maxId) ? 1 : id + 1;
+
             model.addAttribute("artist", artistFromDb.get());
+            model.addAttribute("previd", prevId);
+            model.addAttribute("nextid", nextId);
         }
 
         return "artistdetails";

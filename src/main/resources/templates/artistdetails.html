@@ -6,9 +6,21 @@
 
 <main class="container mt-4 flex-grow-1" th:if="${artist}" th:object="${artist}">
 
-    <div class="text-center mb-4">
-        <h1 class="display-4" th:text="*{artistName}"></h1>
-        <h4 th:text="*{genre}"></h4>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <a th:href="@{|/artistdetails/${previd}|}" class="btn btn-outline-secondary px-3">
+            &lt;
+        </a>
+
+        <div class="text-center">
+            <h1 class="display-4" th:text="*{artistName}"></h1>
+            <h4 class="text-muted" th:text="*{genre}"></h4>
+        </div>
+
+        <a th:href="@{|/artistdetails/${nextid}|}" class="btn btn-primary px-3">
+            &gt;
+        </a>
+
     </div>
 
     <div class="row">

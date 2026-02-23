@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: headerelement('Error')}"></head>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<main class="container mt-5 flex-grow-1 text-center">
+    <h1 class="display-1 fw-bold text-danger">Oops!</h1>
+    <h2>Er is iets misgegaan.</h2>
+    <p class="lead mt-3">De pagina die je zoekt, bestaat niet of er is een fout opgetreden.</p>
+
+    <a href="/" class="btn btn-dark mt-4">Terug naar Home</a>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

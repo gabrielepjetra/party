@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerelement('Home')}"></head>
-<body class="container-fluid p-0 d-flex flex-column min-vh-100">
+<body class="container-fluid p-0 d-flex flex-column min-vh-100 bg-black">
     <div th:replace="~{fragments/header :: navbar}"></div>
 
     <main class="container mt-4 flex-grow-1">
-        <h1>Let's party!</h1>
+        <h1 class="text-warning">Let's party!</h1>
     </main>
 
     <div th:replace="~{fragments/footer :: footer}"></div>
