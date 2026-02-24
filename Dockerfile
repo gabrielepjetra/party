@@ -1,5 +1,5 @@
 FROM maven:3.9.11-amazoncorretto-21 as build
-COPY . /app
+COPY src /app
 WORKDIR /app
 RUN mvn clean install -DskipTests
 FROM amazoncorretto:21-alpine-jdk
