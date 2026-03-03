@@ -24,7 +24,7 @@ public class VenueController {
     @GetMapping("/venuelist")
     public String venueList(Model model, @RequestParam(required = false) Integer minCapacity) {
         logger.info(String.format("venueList -- min=%d", minCapacity));
-        final Iterable<Venue> allVenues = venueRepository.findAll();
+        final Iterable<Venue> allVenues = venueRepository.findBYFilter(minCapacity);
         long nrOfVenues = venueRepository.count();
         model.addAttribute("venues", allVenues);
         return "venuelist";
