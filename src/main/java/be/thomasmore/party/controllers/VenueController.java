@@ -22,10 +22,11 @@ public class VenueController {
     }
 
     @GetMapping("/venuelist")
-    public String venueList(Model model, @RequestParam(required = false) Integer minCapacity) {
-        logger.info(String.format("venueList -- min=%d", minCapacity));
-        final Iterable<Venue> allVenues = venueRepository.findBYFilter(minCapacity);
-        long nrOfVenues = venueRepository.count();
+    public String venueList(Model model,
+                            @RequestParam(required = false) Integer minCapacity,
+                            @RequestParam(required = false) Integer maxCapacity) {
+        logger.info(String.format("venueList -- min=%d", minCapacity, maxCapacity));
+        final Iterable<Venue> allVenues = venueRepository.findBYFilter(minCapacity, maxCapacity);
         model.addAttribute("venues", allVenues);
         return "venuelist";
     }
