@@ -7,6 +7,9 @@
     <main class="container mt-4 flex-grow-1">
         <h1 class="text-center mb-4">Zalen</h1>
         <p th:text="${#lists.size(venues)} + ' zalen gevonden'"></p>
+        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#filterModal">
+            filters
+        </button>
         <div class="row">
             <div th:each="venue: ${venues}" th:object="${venue}" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
 
@@ -25,5 +28,25 @@
     </main>
 
     <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form th:action="@{/venuelist}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Filters</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mx-2">
+                        hier komen de filters
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                        <button type="submit" class="btn btn-primary">zoek</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
