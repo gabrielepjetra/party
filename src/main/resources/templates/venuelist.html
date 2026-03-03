@@ -6,12 +6,12 @@
 
     <main class="container mt-4 flex-grow-1">
         <h1 class="text-center mb-4">Zalen</h1>
-
+        <p th:text="${#lists.size(venues)} + ' zalen gevonden'"></p>
         <div class="row">
             <div th:each="venue: ${venues}" th:object="${venue}" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
 
                 <a th:href="@{|/venuedetails/*{id}|}"
-                   class="card border-0 m-1 p-2 text-center text-decoration-none h-100 text-body">
+                   class="card border-1 m-1 p-2 text-center text-decoration-none h-100 text-body">
 
                     <h3 th:text="*{venueName}"></h3>
                     <p th:text="|*{capacity} personen|"></p>
