@@ -45,7 +45,11 @@
                             <div class="col-12 p-1">
                                 <label class="form-label">minimum</label>
                                 <div class="input-group">
-                                    <input type="number" aria-label="minimum capaciteit" name="minCapacity" step="50">
+                                    <input type="number"
+                                           aria-label="minimum capaciteit"
+                                           name="minCapacity"
+                                           step="50"
+                                           th:value="${param.minCapacity}">
                                     <span class="input-group-text">personen</span>
                                 </div>
                             </div>
