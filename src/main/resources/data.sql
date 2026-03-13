@@ -138,3 +138,39 @@ values ('Kryptonight',
         'SOME GIG''s: Tomorrowland''s Dreamville, MnM Start to Dj Finalist Flowtrack Summer Camp Casa Blanca Festival Sunrise Festival Red ''n Blue Café Local Noxx Publik Vice Festival KdG TD ...',
         '/img/artist_kryptonight.jpg');
 
+INSERT INTO PARTY
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, image_url)
+VALUES ('Big Spring Party', 6, 10, '1 cocktail included',
+        '2025-10-10', '10:00',
+        '/img/party_spring.jpg');
+
+INSERT INTO PARTY
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, image_url)
+VALUES ('Liberty 2025', null, 6, 'free vestiaire, viplounge',
+        '2025-10-25', '22:00',
+        '/img/party_liberty.jpg');
+
+INSERT INTO PARTY
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, image_url)
+VALUES ('Uppercuts', null, null, ' ',
+        '2025-11-01', '21:00',
+        '/img/party_uppercuts.jpg');
+
+INSERT INTO PARTY
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, image_url)
+VALUES ('Zoetzuur', null, null, 'Zoete house / Zure techno',
+        '2025-11-08', '21:00',
+        '/img/party_zoetzuur.jpg');
+
+INSERT INTO PARTY
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, image_url)
+VALUES ('Oldies but Goldies', null, null, 'afterparty@home van THE BOX!',
+        '2025-10-31', '21:00',
+        '/img/party_oldiesbutgoldies.jpg');
+
+INSERT INTO PARTY
+(name, price_presale_in_eur, price_in_eur, extra_info, date, doors, image_url)
+VALUES ('Sapphire Soiree', 45, null,
+        'JCI Mechelen bestaat 45 jaar! En dat saffieren jubileum vieren we graag in stijl met een galabal in Kasteel Tivoli. En jij kan erbij zijn!',
+        '2025-11-15', '21:00',
+        '/img/party_sapphiresoiree.jpg');
