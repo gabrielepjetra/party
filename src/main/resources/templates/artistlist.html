@@ -6,7 +6,13 @@
 
 <main class="container mt-4 flex-grow-1">
     <h1 class="mb-4">Artiesten</h1>
-
+    <form th:action="@{/artistlist}" class="d-flex justify-content-end mb-3">
+        <input type="text"
+               name="keyword"
+               class="form-control w-auto"
+               th:value="${param.keyword}">
+        <button type="submit" class="btn btn-primary ms-2">zoek</button>
+    </form>
     <div class="row">
         <div th:each="artist: ${artists}" th:object="${artist}" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
 

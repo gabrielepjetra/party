@@ -6,12 +6,15 @@
 
     <main class="container mt-4 flex-grow-1">
         <h1 class="text-center mb-4">Zalen</h1>
-
+        <p th:text="${#lists.size(venues)} + ' zalen gevonden'"></p>
+        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#filterModal">
+            filters
+        </button>
         <div class="row">
             <div th:each="venue: ${venues}" th:object="${venue}" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
 
                 <a th:href="@{|/venuedetails/*{id}|}"
-                   class="card border-0 m-1 p-2 text-center text-decoration-none h-100 text-body">
+                   class="card border-1 m-1 p-2 text-center text-decoration-none h-100 text-body">
 
                     <h3 th:text="*{venueName}"></h3>
                     <p th:text="|*{capacity} personen|"></p>
@@ -25,5 +28,174 @@
     </main>
 
     <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form th:action="@{/venuelist}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Filters</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mx-2">
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5>capaciteit</h5>
+                            </div>
+                            <div class="col-6 p-1">
+                                <label class="form-label">minimum</label>
+                                <div class="input-group">
+                                    <input type="number"
+                                           aria-label="minimum capaciteit"
+                                           name="minCapacity"
+                                           step="50"
+                                           th:value="${param.minCapacity}">
+                                    <span class="input-group-text">personen</span>
+                                </div>
+                            </div>
+                            <div class="col-6 p-1">
+                                <label class="form-label">maximum</label>
+                                <div class="input-group">
+                                    <input type="number"
+                                           aria-label="maximum capaciteit"
+                                           name="maxCapacity"
+                                           step="50" th:value="${param.maxCapacity}">
+                                    <span class="input-group-text">personen</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5>afstand van openbaar vervoer</h5>
+                            </div>
+                            <div class="col-12 p-1">
+                                <div class="input-group">
+                                    <input type="number"
+                                           aria-label="maximum afstand openbaar vervoer"
+                                           name="maxDistance"
+                                           step="0.5"
+                                           th:value="${param.maxDistance}">
+                                    <span class="input-group-text">km maximum</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5>eten mogelijk</h5>
+                            </div>
+                            <div class="col-12 p-1">
+                                <div class="d-flex gap-3">
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterFood" value=""
+                                                   class="form-check-input mt-0"
+                                                   aria-label="maakt niet uit"
+                                                   th:checked="${param.filterFood == null or param.filterFood[0] == ''}">
+                                        </div>
+                                        <span class="input-group-text">maakt niet uit</span>
+                                    </div>
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterFood" value="true"
+                                                   class="form-check-input mt-0"
+                                                   aria-label="eten ja"
+                                                   th:checked="${param.filterFood != null and param.filterFood[0] == 'true'}">
+                                        </div>
+                                        <span class="input-group-text">ja</span>
+                                    </div>
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterFood" value="false"
+                                                   class="form-check-input mt-0"
+                                                   aria-label="eten nee"
+                                                   th:checked="${param.filterFood != null and param.filterFood[0] == 'false'}">
+                                        </div>
+                                        <span class="input-group-text">nee</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5>binnen</h5>
+                            </div>
+                            <div class="col-12 p-1">
+                                <div class="d-flex gap-3">
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterIndoor" value=""
+                                                   class="form-check-input mt-0"
+                                                   aria-label="maakt niet uit"
+                                                   th:checked="${param.filterIndoor == null or param.filterIndoor[0] == ''}">
+                                        </div>
+                                        <span class="input-group-text">maakt niet uit</span>
+                                    </div>
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterIndoor" value="true"
+                                                   class="form-check-input mt-0"
+                                                   aria-label="binnen ja"
+                                                   th:checked="${param.filterIndoor != null and param.filterIndoor[0] == 'true'}">
+                                        </div>
+                                        <span class="input-group-text">ja</span>
+                                    </div>
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterIndoor" value="false"
+                                                   class="form-check-input mt-0"
+                                                   aria-label="binnen nee"
+                                                   th:checked="${param.filterIndoor != null and param.filterIndoor[0] == 'false'}">
+                                        </div>
+                                        <span class="input-group-text">nee</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row border rounded mt-3">
+                            <div class="col-12 p-1">
+                                <h5>buiten</h5>
+                            </div>
+                            <div class="col-12 p-1">
+                                <div class="d-flex gap-3">
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterOutdoor" value=""
+                                                   class="form-check-input mt-0"
+                                                   aria-label="maakt niet uit"
+                                                   th:checked="${param.filterOutdoor == null or param.filterOutdoor[0] == ''}">
+                                        </div>
+                                        <span class="input-group-text">maakt niet uit</span>
+                                    </div>
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterOutdoor" value="true"
+                                                   class="form-check-input mt-0"
+                                                   aria-label="buiten ja"
+                                                   th:checked="${param.filterOutdoor != null and param.filterOutdoor[0] == 'true'}">
+                                        </div>
+                                        <span class="input-group-text">ja</span>
+                                    </div>
+                                    <div class="input-group w-auto">
+                                        <div class="input-group-text">
+                                            <input type="radio" name="filterOutdoor" value="false"
+                                                   class="form-check-input mt-0"
+                                                   aria-label="buiten nee"
+                                                   th:checked="${param.filterOutdoor != null and param.filterOutdoor[0] == 'false'}">
+                                        </div>
+                                        <span class="input-group-text">nee</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                        <button type="submit" class="btn btn-primary">zoek</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
