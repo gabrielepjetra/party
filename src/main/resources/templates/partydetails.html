@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: headerelement('Parties')}"></head>
+<body class="container-fluid p-0 d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<main class="container mt-4 flex-grow-1" th:if="${party != null}" th:object="${party}">
+    <h1 class="text-center display-3 mb-3" th:text="*{name}"></h1>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <a class="btn btn-outline-primary" th:href="@{/partydetails/{id}(id=${prev})}">&lt;</a>
+        <h4 th:text="*{#temporals.format(date, 'dd/MM/yyyy')}"></h4>
+        <a class="btn btn-outline-primary" th:href="@{/partydetails/{id}(id=${next})}">&gt;</a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-6">
+
+            <p th:if="*{pricePresaleInEur != null and priceInEur != null}">
+                <span th:text="*{pricePresaleInEur}">€ voorverkoop</span>€ (voorverkoop) /
+                <span th:text="*{priceInEur}"></span>€ (aan de kassa)
+            </p>
+            <p th:if="*{pricePresaleInEur != null and priceInEur == null}">
+                <span th:text="*{pricePresaleInEur}"></span>€ (voorverkoop)
+            </p>
+            <p th:if="*{pricePresaleInEur == null and priceInEur != null}">
+                <span th:text="*{priceInEur}"></span>€ (aan de kassa)
+            </p>
+            <p th:if="*{pricePresaleInEur == null and priceInEur == null}">
+                <strong>Gratis Party!</strong>
+            </p>
+
+            <p th:text="'deuren: ' + *{#temporals.format(doors, 'HH:mm')}"></p>
+
+            <p th:if="*{extraInfo != null and !extraInfo.isBlank()}" th:text="*{extraInfo}"></p>
+        </div>
+        <div class="col-6">
+            <img th:src="*{imageUrl}" class="img-fluid w-50 float-end" alt="party poster">
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>
