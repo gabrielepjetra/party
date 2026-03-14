@@ -5,36 +5,39 @@
 <div th:replace="~{fragments/header :: navbar}"></div>
 
 <main class="container mt-4 flex-grow-1" th:if="${artist}" th:object="${artist}">
+    <h1 class="text-center display-3 mb-3" th:text="*{artistName}"></h1>
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-
-        <a th:href="@{|/artistdetails/${previd}|}" class="btn btn-outline-secondary px-3">
-            &lt;
-        </a>
-
-        <div class="text-center">
-            <h1 class="display-4" th:text="*{artistName}"></h1>
-            <h4 class="text-muted" th:text="*{genre}"></h4>
-        </div>
-
-        <a th:href="@{|/artistdetails/${nextid}|}" class="btn btn-primary px-3">
-            &gt;
-        </a>
+        <a th:href="@{|/artistdetails/${previd}|}" class="btn btn-outline-primary px-3">&lt;</a>
+        <h4 class="text-muted" th:text="*{genre}"></h4>
+        <a th:href="@{|/artistdetails/${nextid}|}" class="btn btn-outline-primary px-3">&gt;</a>
 
     </div>
 
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-6 bg-secondary-subtle rounded pt-2 mb-3">
             <p><strong>portfolio:</strong> <span th:text="*{portfolio}"></span></p>
             <p th:text="*{bio}"></p>
             <a th:href="*{linkMoreInfo}" target="_blank" th:text="*{linkMoreInfo}"></a>
+            <div class="border-top border-secondary-subtle border-2 mt-4" th:if="*{parties != null and !parties.isEmpty()}">
+                <h4 class="my-3">parties waar je <span th:text="*{artistName}"></span> kan zien</h4>
+                <div class="row">
+                    <div class="col-3" th:each="party : *{parties}">
+                        <a th:href="@{/partydetails/{id}(id=${party.id})}" class="text-decoration-none text-dark">
+                            <div class="card text-center p-2">
+                                <p class="fw-bold mb-1" th:text="${party.name}"></p>
+                                <p class="mb-0 text-muted" th:text="${#temporals.format(party.date, 'dd/MM/yyyy')}"></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-6 mb-3 text-center">
-            <img th:src="*{imageUrl}" alt="artist foto" class="img-fluid">
+        <div class="col-6 mb-3 text-center">
+            <img th:src="*{imageUrl}" alt="artist foto" class="img-fluid rounded">
         </div>
     </div>
-
 </main>
 
 <main class="container mt-4 flex-grow-1 text-center" th:unless="${artist}">
