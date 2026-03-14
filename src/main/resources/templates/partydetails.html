@@ -18,7 +18,7 @@
     </div>
 
     <div class="row mt-5">
-        <div class="col-6">
+        <div class="col-6 bg-secondary-subtle rounded pt-2">
 
             <p th:if="*{pricePresaleInEur != null and priceInEur != null}">
                 <span th:text="*{pricePresaleInEur}">€ voorverkoop</span>€ (voorverkoop) /
@@ -40,9 +40,22 @@
             <p th:text="'deuren: ' + *{#temporals.format(doors, 'HH:mm')}"></p>
 
             <p th:if="*{extraInfo != null and !extraInfo.isBlank()}" th:text="*{extraInfo}"></p>
+
+            <div class="border-top border-secondary-subtle border-2" th:if="*{artists != null and !artists.isEmpty()}">
+                <h4 class="my-3">Lineup:</h4>
+                <div class="row">
+                    <div class="col-3" th:each="artist : *{artists}">
+                        <a th:href="@{/artistdetails/{id}(id=${artist.id})}" class="text-decoration-none text-dark">
+                            <div class="card text-center p-2">
+                                <p class="mb-0" th:text="${artist.artistName}"></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-6">
-            <img th:src="*{imageUrl}" class="img-fluid w-50 rounded shadow float-end" alt="party poster">
+            <img th:src="*{imageUrl}" class="img-fluid w-50 rounded shadow" alt="party poster">
         </div>
     </div>
 </main>
