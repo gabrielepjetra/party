@@ -181,3 +181,28 @@ VALUES ('Sapphire Soiree', 45, null,
         (SELECT id FROM VENUE WHERE venue_name = 'Tivoli'),
         '/img/party_sapphiresoiree.jpg');
 
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
+VALUES ((SELECT id FROM party WHERE name = 'Big Spring Party'),
+        (SELECT id FROM artist WHERE artist_name = 'Discobaar a moeder'));
+
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
+VALUES ((SELECT id FROM party WHERE name = 'Big Spring Party'),
+        (SELECT id FROM artist WHERE artist_name = 'Radio Botanique'));
+
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
+VALUES ((SELECT id FROM party WHERE name = 'Liberty 2025'),
+        (SELECT id FROM artist WHERE artist_name = 'Radio Botanique'));
+
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
+VALUES ((SELECT id FROM party WHERE name = 'Uppercuts'),
+        (SELECT id FROM artist WHERE artist_name = 'DJ Koen'));
+
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
+VALUES ((SELECT id FROM party WHERE name = 'Uppercuts'),
+        (SELECT id FROM artist WHERE artist_name = 'Robbe Roels'));
+
+INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
+VALUES ((SELECT id FROM party WHERE name = 'Zoetzuur'),
+        (SELECT id FROM artist WHERE artist_name = 'Robbe Roels'));
+
+
