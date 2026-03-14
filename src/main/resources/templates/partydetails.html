@@ -41,13 +41,25 @@
 
             <p th:if="*{extraInfo != null and !extraInfo.isBlank()}" th:text="*{extraInfo}"></p>
 
-            <div class="border-top border-secondary-subtle border-2" th:if="*{artists != null and !artists.isEmpty()}">
+            <div class="border-top border-secondary-subtle border-2 mb-3" th:if="*{artists != null and !artists.isEmpty()}">
                 <h4 class="my-3">Lineup:</h4>
                 <div class="row">
                     <div class="col-3" th:each="artist : *{artists}">
                         <a th:href="@{/artistdetails/{id}(id=${artist.id})}" class="text-decoration-none text-dark">
                             <div class="card text-center p-2">
                                 <p class="mb-0" th:text="${artist.artistName}"></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary-subtle border-2 mb-3" th:if="*{animals != null and !animals.isEmpty()}">
+                <h4 class="my-3">wie gaat?</h4>
+                <div class="row">
+                    <div class="col-3" th:each="animal : *{animals}">
+                        <a th:href="@{/animaldetails/{id}(id=${animal.id})}" class="text-decoration-none text-dark">
+                            <div class="card text-center p-2">
+                                <p class="mb-0" th:text="${animal.name}"></p>
                             </div>
                         </a>
                     </div>

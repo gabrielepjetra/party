@@ -19,7 +19,7 @@ public class Artist {
     private String portfolio;
     private String imageUrl;
 
-    @ManyToMany(mappedBy = "artists")
+    @ManyToMany(mappedBy = "artists", fetch = FetchType.LAZY)
     private Collection<Party> parties;
 
     public Collection<Party> getParties() {

@@ -26,6 +26,17 @@ public class Party {
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Artist> artists;
 
+    @ManyToMany(mappedBy = "parties", fetch = FetchType.LAZY)
+    private Collection<Animal> animals;
+
+    public Collection<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Collection<Animal> animals) {
+        this.animals = animals;
+    }
+
     public Collection<Artist> getArtists() {return artists;}
 
     public void setArtists(Collection<Artist> artists) {this.artists = artists;}
@@ -99,4 +110,5 @@ public class Party {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
 }

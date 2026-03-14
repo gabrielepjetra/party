@@ -205,4 +205,104 @@ INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID)
 VALUES ((SELECT id FROM party WHERE name = 'Zoetzuur'),
         (SELECT id FROM artist WHERE artist_name = 'Robbe Roels'));
 
+-- the party animal users:
+-- 1
+INSERT INTO ANIMAL (NAME, CITY, BIO, USERNAME)
+VALUES ('Gillende Giraf', 'Mechelen', 'maakt altijd veel lawaai', 'giraf');
 
+-- 2
+INSERT INTO ANIMAL (NAME, CITY, BIO, USERNAME)
+VALUES ('Dorstige Dromedaris', 'Leest', 'drinkt alles op', 'dromedaris');
+
+-- 3
+INSERT INTO ANIMAL (NAME, CITY, BIO, USERNAME)
+VALUES ('Dansende Draak', 'Hombeek', 'de stukken vliegen ervan af', 'draak');
+
+-- 4
+INSERT INTO ANIMAL (NAME, CITY, BIO, USERNAME)
+VALUES ('Zingende Zebra', 'Leest', 'denkt dat hij goed kan zingen', 'zebra');
+
+-- 5
+INSERT INTO ANIMAL (NAME, CITY, BIO, USERNAME)
+VALUES ('Drinkende Das', 'Hombeek', 'stopt niet', 'das');
+
+-- 6
+INSERT INTO ANIMAL (NAME, CITY, BIO, USERNAME)
+VALUES ('Zuipende Zalm', 'Rumst', 'die wil je niet op je feest', 'zalm');
+
+-- 7
+INSERT INTO ANIMAL (NAME, CITY, BIO, USERNAME)
+VALUES ('Feestende Flamingo', 'Mechelen', 'jeeeee', 'flamingo');
+
+-- 8
+INSERT INTO ANIMAL (NAME, CITY, BIO, USERNAME)
+VALUES ('Kotsende Kikker', 'Mechelen', 'aie aie aie', 'kikker');
+
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'giraf',
+           select id from party where name = 'Big Spring Party');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'dromedaris',
+           select id from party where name = 'Liberty 2025');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'dromedaris',
+           select id from party where name = 'Uppercuts');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'dromedaris',
+           select id from party where name = 'Zoetzuur');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'dromedaris',
+           select id from party where name = 'Oldies but Goldies');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'draak',
+           select id from party where name = 'Big Spring Party');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'draak',
+           select id from party where name = 'Liberty 2025');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'zebra',
+           select id from party where name = 'Uppercuts');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'das',
+           select id from party where name = 'Zoetzuur');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'das',
+           select id from party where name = 'Oldies but Goldies');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'das',
+           select id from party where name = 'Big Spring Party');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'das',
+           select id from party where name = 'Liberty 2025');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'zalm',
+           select id from party where name = 'Uppercuts');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'flamingo',
+           select id from party where name = 'Zoetzuur');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'kikker',
+           select id from party where name = 'Big Spring Party');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'kikker',
+           select id from party where name = 'Liberty 2025');
+
+INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID)
+values (select id from animal where username = 'kikker',
+           select id from party where name = 'Uppercuts');
