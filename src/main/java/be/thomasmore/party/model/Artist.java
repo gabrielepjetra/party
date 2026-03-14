@@ -2,6 +2,8 @@ package be.thomasmore.party.model;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class Artist {
     @Id
@@ -17,6 +19,17 @@ public class Artist {
     private String portfolio;
     private String imageUrl;
 
+    @ManyToMany(mappedBy = "artists")
+    private Collection<Party> parties;
+
+    public Collection<Party> getParties() {
+        return parties;
+    }
+
+    public void setParties(Collection<Party> parties) {
+        this.parties = parties;
+    }
+
     public Artist() {
     }
 
@@ -24,9 +37,7 @@ public class Artist {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) {this.id = id;}
 
     public String getArtistName() {
         return artistName;

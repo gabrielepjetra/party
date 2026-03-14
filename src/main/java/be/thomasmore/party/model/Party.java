@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collection;
 
 @Entity
 public class Party {
@@ -22,9 +23,14 @@ public class Party {
     @ManyToOne(fetch = FetchType.LAZY)
     private Venue venue;
 
-    public Venue getVenue() {
-        return venue;
-    }
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Collection<Artist> artists;
+
+    public Collection<Artist> getArtists() {return artists;}
+
+    public void setArtists(Collection<Artist> artists) {this.artists = artists;}
+
+    public Venue getVenue() {return venue;}
 
     public void setVenue(Venue venue) {
         this.venue = venue;
