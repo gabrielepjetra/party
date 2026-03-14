@@ -1,9 +1,8 @@
 package be.thomasmore.party.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 public class Venue {
@@ -21,6 +20,13 @@ public class Venue {
     private String city;
     private int distanceFromPublicTransportInKm;
     private String imageUrl;
+
+    @OneToMany(mappedBy = "venue", fetch = FetchType.LAZY)
+    private Collection<Party> parties;
+
+    public Collection<Party> getParties() {return parties;}
+
+    public void setParties(Collection<Party> parties) {this.parties = parties;}
 
     public Integer getId() {return id;}
 
